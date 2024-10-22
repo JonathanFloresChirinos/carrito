@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras</title>
+</head>
+<body>
+    <h1>Carrito de Compras</h1>
+    <p>Introduce los productos que deseas agregar</p>
+    <form action="{{url_for('procesa')}}" method="post">
+        <label for="">Producto: </label>
+        <input type="text" name="producto" value="" required>
+        <button type="submit">Agregar al Carrito</button>
+    </form>
+
+    <a href="{{url_for('vaciar')}}">Vaciar el Carrito</a>
+
+    <h3>Contenido del carrito</h3>
+    {% if lista %}
+        <!--Mostrar los productos del carrito-->
+        <ul>
+        {% for item in lista%}
+            <li>{{ item }}</li>
+        {% endfor%}
+        </ul>
+    {% else %}
+        <p><b>El carrito esta vacio</b></p>
+    {% endif%}
+</body>
+</html>
